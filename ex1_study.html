@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5x5 Centered Circles</title>
+    <style>
+        /* 전체 페이지 스타일 설정 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 페이지 전체 높이를 채움 */
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* 버튼 그리드 컨테이너 스타일 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5x5 그리드 */
+            gap: 10px; /* 버튼 간격 */
+        }
+
+        /* 원형 버튼 스타일 설정 */
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 14px;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* 이미지 컨테이너 스타일 설정 */
+        .image-container {
+            display: none; /* 기본적으로 숨김 */
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* 이미지 스타일 설정 */
+        .image-container img {
+            max-width: 300px;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- 5x5 그리드로 원형 버튼 생성 -->
+    <div class="grid-container">
+        <div class="circle" onclick="showImage(1)">1</div>
+        <div class="circle" onclick="showImage(2)">2</div>
+        <div class="circle" onclick="showImage(3)">3</div>
+        <div class="circle" onclick="showImage(4)">4</div>
+        <div class="circle" onclick="showImage(5)">5</div>
+        <div class="circle" onclick="showImage(6)">6</div>
+        <div class="circle" onclick="showImage(7)">7</div>
+        <div class="circle" onclick="showImage(8)">8</div>
+        <div class="circle" onclick="showImage(9)">9</div>
+        <div class="circle" onclick="showImage(10)">10</div>
+        <div class="circle" onclick="showImage(11)">11</div>
+        <div class="circle" onclick="showImage(12)">12</div>
+        <div class="circle" onclick="showImage(13)">13</div>
+        <div class="circle" onclick="showImage(14)">14</div>
+        <div class="circle" onclick="showImage(15)">15</div>
+        <div class="circle" onclick="showImage(16)">16</div>
+        <div class="circle" onclick="showImage(17)">17</div>
+        <div class="circle" onclick="showImage(18)">18</div>
+        <div class="circle" onclick="showImage(19)">19</div>
+        <div class="circle" onclick="showImage(20)">20</div>
+        <div class="circle" onclick="showImage(21)">21</div>
+        <div class="circle" onclick="showImage(22)">22</div>
+        <div class="circle" onclick="showImage(23)">23</div>
+        <div class="circle" onclick="showImage(24)">24</div>
+        <div class="circle" onclick="showImage(25)">25</div>
+    </div>
+
+    <!-- 이미지 표시를 위한 컨테이너 -->
+    <div class="image-container" id="imageContainer">
+        <img src="" alt="Image" id="displayedImage"> <!-- 동적으로 이미지 경로 설정 -->
+        <p id="imageText"></p> <!-- 동적으로 텍스트 설정 -->
+    </div>
+
+    <script>
+        /* 이미지를 표시하는 함수 */
+        function showImage(index) {
+    const imageContainer = document.getElementById('imageContainer'); // 이미지 컨테이너 요소 가져오기
+    const displayedImage = document.getElementById('displayedImage'); // 이미지 요소 가져오기
+    const imageText = document.getElementById('imageText'); // 이미지 텍스트 요소 가져오기
+
+    // 텍스트 매핑 데이터베이스
+    const textMapping = {
+        1: "첫 번째 이미지 설명",
+        2: "두 번째 이미지 설명",
+        3: "세 번째 이미지 설명",
+        4: "네 번째 이미지 설명",
+        5: "다섯 번째 이미지 설명",
+        6: "여섯 번째 이미지 설명",
+        7: "일곱 번째 이미지 설명",
+        8: "여덟 번째 이미지 설명",
+        9: "10/10 광고 뉴스 제작",
+        10: "열 번째 이미지 설명",
+        11: "열한 번째 이미지 설명",
+        12: "열두 번째 이미지 설명",
+        13: "열세 번째 이미지 설명",
+        14: "11/12 퀴즐렛",
+        15: "11/14 워드월",
+        16: "열여섯 번째 이미지 설명",
+        17: "열일곱 번째 이미지 설명",
+        18: "열여덟 번째 이미지 설명",
+        19: "퀴즈게코",
+        20: "롤링페이퍼",
+        21: "퀴지즈",
+        22: "스물두 번째 이미지 설명",
+        23: "스물세 번째 이미지 설명",
+        24: "스물네 번째 이미지 설명",
+        25: "스물다섯 번째 이미지 설명",
+    };
+
+    // 이미지 경로 설정
+    displayedImage.src = `images/image${index}.jpg`;
+
+    // 텍스트 설정 (index를 사용해 매핑된 텍스트 선택)
+    imageText.textContent = textMapping[index] || `Image ${index}`;
+
+    // 이미지 컨테이너 표시
+    imageContainer.style.display = 'block';
+}
+    </script>
+</body>
+</html>
